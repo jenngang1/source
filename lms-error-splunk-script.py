@@ -115,7 +115,7 @@ like(error_statement_256, "%Repository: Encountered an error in repository runti
 
 | eval err_message = if(isnull(error_statement), substr(_raw, 1, 256), error_statement)
 
-| eval errorType=case(
+| eval err_type=case(
     like(_raw, "%The parallel execution limit per tenant has been exceeded:100%"), "Failed to execute query (Execution limit exceeded)", 
     like(_raw, "%Error occured while saving labels to DB%"), "Save Labels Error", 
     like(_raw, "%User authentication validation failed due to invalid authentication details.%"), "Invalid Authentication", 
@@ -207,4 +207,4 @@ like(error_statement_256, "%Repository: Encountered an error in repository runti
 
 | rename SFDC AS "dc"
 
-| table id, date, weekday, time, hour, dc, server, server_type, instance, sourcetype, correl, errorType, component, err_message, count, date_2, time_2, date_3, time_3
+| table id, date, weekday, time, hour, dc, server, server_type, instance, sourcetype, correl, err_type, component, err_message, count, date_2, time_2, date_3, time_3

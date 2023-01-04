@@ -21,8 +21,8 @@ LogLevel = ERROR ((CalculationViewGenerationServiceV2 OR GetSACResourceImpl OR S
     like(err_message,"Error while executing the search configuration%"),"(Error while executing the search configuration)",
     like(err_message,"Error while getting deleting the query calc view for the story in OEM%"),"(Error while getting deleting the query calc view for the story in OEM)",
     like(err_message,"Error while getting the widget details%"),"(Error while getting the widget details)",
-    ike(err_message,"Error while populating the response into share collection%"),"(Error while populating the response into share collection)",
-    ike(err_message,"Error while processing QueryValidationRequest."),"(Error while processing QueryValidationRequest.)",
+    like(err_message,"Error while populating the response into share collection%"),"(Error while populating the response into share collection)",
+    like(err_message,"Error while processing QueryValidationRequest."),"(Error while processing QueryValidationRequest.)",
     like(err_message,"Exception in getNodeInfo%"),"(Exception in getNodeInfo)",
     like(err_message,"Exception occurred in startTasksUsingThreads"),"(Exception occurred in startTasksUsingThreads)",
     like(err_message,"Exception while getting the grup type to ID maps"),"(Exception while getting the grup type to ID maps)",
@@ -103,7 +103,7 @@ LogLevel = ERROR ((CalculationViewGenerationServiceV2 OR GetSACResourceImpl OR S
     like(ignore,"%Saving SAC OAuth configuration Failed%"),"(Saving SAC OAuth configuration Failed)",
     like(ignore,"%Error creating bean%"),"(Error creating bean)",
     1==1,err_message)
-    
+
 | eval err_message = substr(err_message,1,256)
 | eval date = strftime(_time, "%Y-%m-%d") 
 | eval weekday = strftime(_time, "%A") 
